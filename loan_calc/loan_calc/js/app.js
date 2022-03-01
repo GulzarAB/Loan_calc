@@ -14,7 +14,7 @@ form.addEventListener("submit",function(e){
 form.addEventListener("submit",calculateResults);
 
 function calculateResults(e) {
-// e.preventDefault();
+
 
     const amount = document.querySelector("#amount");
     const interest = document.querySelector("#interest");
@@ -36,14 +36,17 @@ function calculateResults(e) {
         monthlyPayment.value = monthly.toFixed(2);
         totalPayment.value = (monthly * calculatePayments).toFixed(2);
         totalInterest.value = (monthly * calculatePayments - principal).toFixed(2);
-
+        
         document.querySelector("#output").style.display = "block";
-        document.querySelector("loader").style.display = "none";
+        document.querySelector("#loader").style.display = "none";
+        
+        
     } else {
         // const p = document.createElement("p");
         showError("Заполните все поля!");
     }
 
+ e.preventDefault();
 }
 
 
@@ -62,6 +65,8 @@ function showError(error) {
     cardBody.insertBefore(div,heading);
     
     setTimeout(clearError, 3000);
+    
+   
 }
 
 function clearError() {
